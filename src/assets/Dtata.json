@@ -1,0 +1,30 @@
+[
+    {
+        "useremail": "manager@email.com",
+        "password": "123",
+        "displayName" : "Manager John",
+        "role": "manager",
+        "permission": [
+            {
+                "name": "View landing page",
+                "code": "V01"
+            },
+            {
+                "name": "View Restricted Link",
+                "code": "VR01"
+            }
+        ]
+    },
+    {
+        "useremail": "user@email.com",
+        "password": "123",
+        "displayName" : "User Lim",
+        "role": "user",
+        "permission": [
+            {
+                "name": "View landing page",
+                "code": "V01"
+            }
+        ]
+    }
+]
