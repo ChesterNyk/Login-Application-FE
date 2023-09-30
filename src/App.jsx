@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import LandingPage from "./pages/LandingPage";
+import { CssBaseline } from "@mui/material";
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
     return (
         <>
             <Router>
+                <CssBaseline />
                 <Routes>
                     <Route path="/login" exact element={<LoginPage />} />
                     <Route path="/landingPage" exact element={<LandingPage />} />
