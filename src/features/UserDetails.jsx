@@ -19,9 +19,6 @@ const UserDetails = (props) => {
         <>
             <Container
                 sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
                     height: "100vh", // Adjust the height for centering vertically
                 }}
             >
