@@ -10,8 +10,12 @@
                 "code": "V01"
             },
             {
-                "name": "View Restricted Link",
-                "code": "VR01"
+                "name": "View User Details",
+                "code": "VL01"
+            },
+            {
+                "name": "View All accounts",
+                "code": "VL02"
             }
         ]
     },
@@ -24,6 +28,10 @@
             {
                 "name": "View landing page",
                 "code": "V01"
+            },
+            {
+                "name": "View User Details",
+                "code": "VL01"
             }
         ]
     }

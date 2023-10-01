@@ -37,7 +37,8 @@ const Login = () => {
                         username: info.useremail,
                         displayName: info.displayName,
                         role: info.role,
-                        permission : info.permission
+                        permission : info.permission,
+                        isAuthenticated: true
                     }
                 });
                 navigate("/landingPage")

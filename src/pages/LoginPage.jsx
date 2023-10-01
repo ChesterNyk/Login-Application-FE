@@ -6,7 +6,7 @@ import LoginAppBar from "../components/AppBar";
 const LoginPage = () => {
     return (
         <Box sx={{ overflow: "hidden", height: "100vh", backgroundColor:"#E5E5E5" }}>
-            <LoginAppBar />
+            <LoginAppBar name="login"/>
             <Box
                 sx={{
                     width: "80%",
