@@ -3,8 +3,8 @@ import TextField from "../components/TextField";
 import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import Data from "../assets/Dtata.json";
 import { useDispatch } from "react-redux";
+import { userLogin } from "../api/LoginAPI";
 
 const Login = () => {
     // Regular expression pattern for a basic email format validation
@@ -13,7 +13,7 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const [formData, setFormData] = React.useState({
-        email: "",
+        username: "",
         password: "",
     });
 
@@ -24,55 +24,56 @@ const Login = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const authenticateLogin = (formData) => {
-        console.log(">>>> check login")
-        setIsAuthenticated(true);
-        setLoginError(false);
+    const authenticateLogin = (res) => {
+        console.log(">>>> check login ", res);
 
-        Data.forEach((info, index) => {
-            if (formData.email === info.useremail && formData.password === info.password) {
-                dispatch({
-                    type: "auth/loginUser",
-                    payload: {
-                        username: info.useremail,
-                        displayName: info.displayName,
-                        role: info.role,
-                        permission : info.permission,
-                        isAuthenticated: true
-                    }
-                });
-                navigate("/landingPage")
-            } else {
-                setIsAuthenticated(false);
-                setLoginError(true);
-            }
-        })
-    }
+        if (res.error === false) {
+            dispatch({
+                type: "auth/loginUser",
+                payload: {
+                    username: res.data.userInfo.username,
+                    displayName: res.data.userInfo.name,
+                    role: res.data.userInfo.role,
+                    permission: res.data.userInfo.permission,
+                },
+            });
+            navigate("/landingPage");
+        } else {
+            setIsAuthenticated(false);
+            setLoginError(true);
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("Login Information (email): ", formData.email);
+        console.log("Login Information (username): ", formData.username);
         console.log("Login Information (password): ", formData.password);
 
         // Validation :
         // check if email and password are not empty
-        if (formData.email && formData.password) {
+        if (formData.username && formData.password) {
             // check email is in email format
-            if (emailPattern.test(formData.email)) {
-              authenticateLogin(formData)
-            } 
-          } else {
+            if (emailPattern.test(formData.username)) {
+                userLogin(authenticateLogin, formData);
+            } else {
+                setIsAuthenticated(false);
+                setLoginError(true);
+            }
+        } else {
             setIsAuthenticated(false);
             setLoginError(true);
-          }
+        }
     };
 
     return (
         <Box>
             <Box sx={{ flexGrow: "1", px: 1, py: 1 }}>
                 <form onSubmit={handleSubmit}>
-                    <Typography variant="h5" sx={{fontSize: "18pt", fontWeight: "bold"}}>
+                    <Typography
+                        variant="h5"
+                        sx={{ fontSize: "18pt", fontWeight: "bold" }}
+                    >
                         Login
                     </Typography>
                     <Box
@@ -83,11 +84,11 @@ const Login = () => {
                         }}
                     >
                         <TextField
-                            label={"Email"}
-                            name={"email"}
+                            label={"Username"}
+                            name={"username"}
                             value={formData.email}
                             onChange={(e) =>
-                                handleInputChange("email", e.target.value)
+                                handleInputChange("username", e.target.value)
                             }
                         />
                         <TextField
@@ -114,7 +115,7 @@ const Login = () => {
                             color="error"
                             align="center"
                         >
-                            Incorrect email or password.
+                            Incorrect username or password.
                         </Typography>
                     )}
                     {isAuthenticated && (
