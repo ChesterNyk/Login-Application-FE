@@ -62,7 +62,7 @@ Once the development server is running, open your web browser and go to http://l
 
 ## Room For Improvement / Future Features
 Below are some ways that this app can be improved upon! Here is a list of some ideas for future improvements:
-- Using useAuth & AuthProvider to handle all authentication
+- Include Jwt tokens for authentication
 - Add more features like edit profile, delete account, create account
 - Add session timeout to logout user after a certain time
 
