@@ -87,6 +87,7 @@ const Login = () => {
                             label={"Username"}
                             name={"username"}
                             value={formData.email}
+                            placeholder={"example@email.com"}
                             onChange={(e) =>
                                 handleInputChange("username", e.target.value)
                             }

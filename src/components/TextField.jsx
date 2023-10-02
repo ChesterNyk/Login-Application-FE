@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import { AccountCircle, Lock } from "@mui/icons-material";
 
 const TextFieldComponent = (props) => {
-    const { name, label, value, onChange } = props;
+    const { name, label, value, onChange, placeholder } = props;
     const inputType = name === "password" ? "password" : "text";
 
     const fieldIcons =
@@ -22,6 +22,7 @@ const TextFieldComponent = (props) => {
             margin="normal"
             value={value}
             onChange={onChange}
+            placeholder={placeholder}
             InputProps={{
                 startAdornment: fieldIcons,
             }}
