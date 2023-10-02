@@ -12,7 +12,7 @@ const UserList = () => {
         const newData = res.data.map((info, index) => ({
             id: info.userId,
             role: info.role,
-            username: info.username,
+            username: info.userName,
             name: info.name,
         }));
 
