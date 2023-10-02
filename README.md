@@ -2,15 +2,28 @@
 ## Problem Statement
 Creating a basic login application.
 ## Technologies Used
-- ⚛️ React
-- JavaScript
-- 📡 Axios
-- 📦 MUI
-- Redux
+-  React
+-  JavaScript
+-  Axios
+-  MUI
+-  Redux
 ## Description / Features
 This login application is web application that showcase the basic of an user login. This application works together with a Spring-boot application that serves as the BE. Here's how it works:
 
-- <b>Login:</b> User will input their login credentials which if valid would allow them to enter the application.
+- <b>Login:</b> User will input their login credentials which if valid would allow them to enter the application. Validation checks include checking if either field is empty, if username is in the proper format, if username and passowrd entered exists in the database
+
+- <b>Role Based Access:</b> Depending on the role the user has, they will be able to view and access different features.
+    - Manager Role :
+        - Able to view landing page with user details 
+        - Able to view webpage that shows all users in the DataBase at the moment
+            - Account available :
+                - <b>UserName:</b> john@example.com
+                - <b>Password:</b> password1
+    - User Role :
+        - Able to view landing page with user details
+            - Account available :
+                - <b>UserName:</b> mark@example.com
+                - <b>Password:</b> password2 
 
 ## Usage
 To Run the application in you local machine, follow these steps
@@ -49,7 +62,9 @@ Once the development server is running, open your web browser and go to http://l
 
 ## Room For Improvement / Future Features
 Below are some ways that this app can be improved upon! Here is a list of some ideas for future improvements:
-
+- Using useAuth & AuthProvider to handle all authentication
+- Add more features like edit profile, delete account, create account
+- Add session timeout to logout user after a certain time
 
 ## Author
 - Name : Chester Ng
